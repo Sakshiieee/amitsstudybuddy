@@ -54,7 +54,7 @@
   --color-chart-4: var(--saturday);
   --color-chart-5: var(--success);
   --font-display: "Space Grotesk", "Segoe UI", sans-serif;
-  --font-sans: "Inter", "Segoe UI", sans-serif;
+  --font-sans: "Nunito", "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --shadow-pop: 4px 4px 0 var(--ink);
   --shadow-pop-sm: 3px 3px 0 var(--ink);
