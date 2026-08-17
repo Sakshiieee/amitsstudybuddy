@@ -14,13 +14,334 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      achievements: {
+        Row: {
+          code: string
+          earned_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          code: string
+          earned_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          code?: string
+          earned_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      coach_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      default_schedule_tasks: {
+        Row: {
+          day_type: string
+          end_min: number
+          id: string
+          kind: string
+          note: string
+          requires_reflection: boolean
+          start_min: number
+          subject: string
+          title: string
+          xp: number
+        }
+        Insert: {
+          day_type: string
+          end_min: number
+          id?: string
+          kind: string
+          note?: string
+          requires_reflection?: boolean
+          start_min: number
+          subject: string
+          title: string
+          xp?: number
+        }
+        Update: {
+          day_type?: string
+          end_min?: number
+          id?: string
+          kind?: string
+          note?: string
+          requires_reflection?: boolean
+          start_min?: number
+          subject?: string
+          title?: string
+          xp?: number
+        }
+        Relationships: []
+      }
+      focus_events: {
+        Row: {
+          created_at: string
+          event_type: string
+          id: string
+          log_id: string | null
+          seconds_away: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          event_type: string
+          id?: string
+          log_id?: string | null
+          seconds_away?: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          event_type?: string
+          id?: string
+          log_id?: string | null
+          seconds_away?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "focus_events_log_id_fkey"
+            columns: ["log_id"]
+            isOneToOne: false
+            referencedRelation: "task_logs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          id: string
+          last_streak_date: string | null
+          longest_streak: number
+          name: string
+          onboarded: boolean
+          settings: Json
+          streak: number
+          updated_at: string
+          xp: number
+        }
+        Insert: {
+          created_at?: string
+          id: string
+          last_streak_date?: string | null
+          longest_streak?: number
+          name?: string
+          onboarded?: boolean
+          settings?: Json
+          streak?: number
+          updated_at?: string
+          xp?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          last_streak_date?: string | null
+          longest_streak?: number
+          name?: string
+          onboarded?: boolean
+          settings?: Json
+          streak?: number
+          updated_at?: string
+          xp?: number
+        }
+        Relationships: []
+      }
+      schedule_tasks: {
+        Row: {
+          active: boolean
+          created_at: string
+          day_type: string
+          end_min: number
+          id: string
+          kind: string
+          note: string
+          requires_reflection: boolean
+          start_min: number
+          subject: string
+          title: string
+          user_id: string
+          xp: number
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          day_type: string
+          end_min: number
+          id?: string
+          kind?: string
+          note?: string
+          requires_reflection?: boolean
+          start_min: number
+          subject?: string
+          title: string
+          user_id: string
+          xp?: number
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          day_type?: string
+          end_min?: number
+          id?: string
+          kind?: string
+          note?: string
+          requires_reflection?: boolean
+          start_min?: number
+          subject?: string
+          title?: string
+          user_id?: string
+          xp?: number
+        }
+        Relationships: []
+      }
+      task_logs: {
+        Row: {
+          active_seconds: number
+          completed_at: string | null
+          id: string
+          interruptions: number
+          log_date: string
+          rating: number | null
+          reason: string | null
+          reflection: string | null
+          started_at: string
+          status: string
+          task_id: string
+          updated_at: string
+          user_id: string
+          xp_awarded: number
+        }
+        Insert: {
+          active_seconds?: number
+          completed_at?: string | null
+          id?: string
+          interruptions?: number
+          log_date: string
+          rating?: number | null
+          reason?: string | null
+          reflection?: string | null
+          started_at?: string
+          status?: string
+          task_id: string
+          updated_at?: string
+          user_id: string
+          xp_awarded?: number
+        }
+        Update: {
+          active_seconds?: number
+          completed_at?: string | null
+          id?: string
+          interruptions?: number
+          log_date?: string
+          rating?: number | null
+          reason?: string | null
+          reflection?: string | null
+          started_at?: string
+          status?: string
+          task_id?: string
+          updated_at?: string
+          user_id?: string
+          xp_awarded?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "task_logs_task_id_fkey"
+            columns: ["task_id"]
+            isOneToOne: false
+            referencedRelation: "schedule_tasks"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tests: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          priority: string
+          subject: string
+          syllabus: string
+          test_date: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          priority?: string
+          subject: string
+          syllabus?: string
+          test_date: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          priority?: string
+          subject?: string
+          syllabus?: string
+          test_date?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      xp_events: {
+        Row: {
+          amount: number
+          created_at: string
+          id: string
+          reason: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          id?: string
+          reason: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          id?: string
+          reason?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      ensure_setup: { Args: { p_name?: string }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
