@@ -65,7 +65,7 @@ function TestsView() {
 
   const addTest = useMutation({
     mutationFn: async () => {
-      const { error } = await supabase.from("tests").insert({ ...form, user_id: userId });
+      const { error } = await supabase.from("tests").insert({ ...form, user_id: userId! });
       if (error) throw error;
     },
     onSuccess: () => {

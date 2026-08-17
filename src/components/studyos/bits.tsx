@@ -8,8 +8,8 @@ export function PopCard({
   tone,
 }: {
   children: ReactNode;
-  className?: string;
-  tone?: string;
+  className?: string | undefined;
+  tone?: string | undefined;
 }) {
   return (
     <div
@@ -31,8 +31,8 @@ export function Bar({
   className,
 }: {
   value: number;
-  tone?: string;
-  className?: string;
+  tone?: string | undefined;
+  className?: string | undefined;
 }) {
   return (
     <div
@@ -58,9 +58,9 @@ export function StatTile({
 }: {
   label: string;
   value: ReactNode;
-  sub?: string;
-  tone?: string;
-  emoji?: string;
+  sub?: string | undefined;
+  tone?: string | undefined;
+  emoji?: string | undefined;
 }) {
   return (
     <div className="card-pop flex flex-col justify-between p-3">
@@ -80,8 +80,8 @@ export function Pill({
   className,
 }: {
   children: ReactNode;
-  tone?: string;
-  className?: string;
+  tone?: string | undefined;
+  className?: string | undefined;
 }) {
   return (
     <span
