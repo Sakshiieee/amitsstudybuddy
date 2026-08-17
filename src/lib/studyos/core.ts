@@ -139,7 +139,7 @@ export const LEVELS = [
 ];
 
 export function levelFor(xp: number) {
-  let current = LEVELS[0];
+  let current = LEVELS[0]!;
   for (const l of LEVELS) if (xp >= l.min) current = l;
   const next = LEVELS.find((l) => l.min > xp);
   const span = next ? next.min - current.min : 1;
