@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CoachRouteImport } from './routes/coach'
+import { Route as ParentRouteImport } from './routes/parent'
 import { Route as PlanRouteImport } from './routes/plan'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as SettingsRouteImport } from './routes/settings'
@@ -30,6 +31,11 @@ const AuthRoute = AuthRouteImport.update({
 const CoachRoute = CoachRouteImport.update({
   id: '/coach',
   path: '/coach',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentRoute = ParentRouteImport.update({
+  id: '/parent',
+  path: '/parent',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlanRoute = PlanRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/coach': typeof CoachRoute
+  '/parent': typeof ParentRoute
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/coach': typeof CoachRoute
+  '/parent': typeof ParentRoute
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/coach': typeof CoachRoute
+  '/parent': typeof ParentRoute
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
@@ -84,14 +93,30 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/auth' | '/coach' | '/plan' | '/progress' | '/settings' | '/tests'
+    | '/'
+    | '/auth'
+    | '/coach'
+    | '/parent'
+    | '/plan'
+    | '/progress'
+    | '/settings'
+    | '/tests'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/coach' | '/plan' | '/progress' | '/settings' | '/tests'
+  to:
+    | '/'
+    | '/auth'
+    | '/coach'
+    | '/parent'
+    | '/plan'
+    | '/progress'
+    | '/settings'
+    | '/tests'
   id:
     | '__root__'
     | '/'
     | '/auth'
     | '/coach'
+    | '/parent'
     | '/plan'
     | '/progress'
     | '/settings'
@@ -102,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRoute: typeof AuthRoute
   CoachRoute: typeof CoachRoute
+  ParentRoute: typeof ParentRoute
   PlanRoute: typeof PlanRoute
   ProgressRoute: typeof ProgressRoute
   SettingsRoute: typeof SettingsRoute
@@ -129,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/coach'
       fullPath: '/coach'
       preLoaderRoute: typeof CoachRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent': {
+      id: '/parent'
+      path: '/parent'
+      fullPath: '/parent'
+      preLoaderRoute: typeof ParentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/plan': {
@@ -166,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
   CoachRoute: CoachRoute,
+  ParentRoute: ParentRoute,
   PlanRoute: PlanRoute,
   ProgressRoute: ProgressRoute,
   SettingsRoute: SettingsRoute,
