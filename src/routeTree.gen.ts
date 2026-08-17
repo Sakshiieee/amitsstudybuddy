@@ -14,6 +14,7 @@ import { Route as AuthRouteImport } from './routes/auth'
 import { Route as CoachRouteImport } from './routes/coach'
 import { Route as PlanRouteImport } from './routes/plan'
 import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as TestsRouteImport } from './routes/tests'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +42,11 @@ const ProgressRoute = ProgressRouteImport.update({
   path: '/progress',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TestsRoute = TestsRouteImport.update({
   id: '/tests',
   path: '/tests',
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/coach': typeof CoachRoute
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
+  '/settings': typeof SettingsRoute
   '/tests': typeof TestsRoute
 }
 export interface FileRoutesByTo {
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/coach': typeof CoachRoute
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
+  '/settings': typeof SettingsRoute
   '/tests': typeof TestsRoute
 }
 export interface FileRoutesById {
@@ -70,14 +78,24 @@ export interface FileRoutesById {
   '/coach': typeof CoachRoute
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
+  '/settings': typeof SettingsRoute
   '/tests': typeof TestsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/coach' | '/plan' | '/progress' | '/tests'
+  fullPaths:
+    '/' | '/auth' | '/coach' | '/plan' | '/progress' | '/settings' | '/tests'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/coach' | '/plan' | '/progress' | '/tests'
-  id: '__root__' | '/' | '/auth' | '/coach' | '/plan' | '/progress' | '/tests'
+  to: '/' | '/auth' | '/coach' | '/plan' | '/progress' | '/settings' | '/tests'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/coach'
+    | '/plan'
+    | '/progress'
+    | '/settings'
+    | '/tests'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -86,6 +104,7 @@ export interface RootRouteChildren {
   CoachRoute: typeof CoachRoute
   PlanRoute: typeof PlanRoute
   ProgressRoute: typeof ProgressRoute
+  SettingsRoute: typeof SettingsRoute
   TestsRoute: typeof TestsRoute
 }
 
@@ -126,6 +145,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProgressRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tests': {
       id: '/tests'
       path: '/tests'
@@ -142,6 +168,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoachRoute: CoachRoute,
   PlanRoute: PlanRoute,
   ProgressRoute: ProgressRoute,
+  SettingsRoute: SettingsRoute,
   TestsRoute: TestsRoute,
 }
 export const routeTree = rootRouteImport
