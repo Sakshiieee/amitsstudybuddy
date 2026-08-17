@@ -16,6 +16,7 @@ import { Route as ParentRouteImport } from './routes/parent'
 import { Route as PlanRouteImport } from './routes/plan'
 import { Route as ProgressRouteImport } from './routes/progress'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SubjectsRouteImport } from './routes/subjects'
 import { Route as TestsRouteImport } from './routes/tests'
 
 const IndexRoute = IndexRouteImport.update({
@@ -53,6 +54,11 @@ const SettingsRoute = SettingsRouteImport.update({
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SubjectsRoute = SubjectsRouteImport.update({
+  id: '/subjects',
+  path: '/subjects',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TestsRoute = TestsRouteImport.update({
   id: '/tests',
   path: '/tests',
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
+  '/subjects': typeof SubjectsRoute
   '/tests': typeof TestsRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
+  '/subjects': typeof SubjectsRoute
   '/tests': typeof TestsRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/plan': typeof PlanRoute
   '/progress': typeof ProgressRoute
   '/settings': typeof SettingsRoute
+  '/subjects': typeof SubjectsRoute
   '/tests': typeof TestsRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/plan'
     | '/progress'
     | '/settings'
+    | '/subjects'
     | '/tests'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/plan'
     | '/progress'
     | '/settings'
+    | '/subjects'
     | '/tests'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/plan'
     | '/progress'
     | '/settings'
+    | '/subjects'
     | '/tests'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   PlanRoute: typeof PlanRoute
   ProgressRoute: typeof ProgressRoute
   SettingsRoute: typeof SettingsRoute
+  SubjectsRoute: typeof SubjectsRoute
   TestsRoute: typeof TestsRoute
 }
 
@@ -185,6 +198,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/subjects': {
+      id: '/subjects'
+      path: '/subjects'
+      fullPath: '/subjects'
+      preLoaderRoute: typeof SubjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tests': {
       id: '/tests'
       path: '/tests'
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   PlanRoute: PlanRoute,
   ProgressRoute: ProgressRoute,
   SettingsRoute: SettingsRoute,
+  SubjectsRoute: SubjectsRoute,
   TestsRoute: TestsRoute,
 }
 export const routeTree = rootRouteImport
