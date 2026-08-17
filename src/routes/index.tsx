@@ -221,7 +221,7 @@ function HomeView() {
       )}
 
       {/* RIGHT NOW */}
-      <PopCard className="animate-pop-in shadow-pop" tone={current ? "sunday" : undefined}>
+      <PopCard className="animate-pop-in shadow-pop" {...(current ? { tone: "sunday" } : {})}>
         <div className="flex items-center justify-between">
           <p className="eyebrow" style={{ color: "var(--sunday)" }}>
             ⚡ Right now

@@ -68,7 +68,10 @@ function PlanView() {
       <div className="flex flex-wrap gap-2">
         {DAY_TYPES.map((d) => (
           <button key={d} onClick={() => setDayType(d)} className="tap-pop">
-            <Pill tone={DAY_TYPE_META[d].tone} muted={d !== active}>
+            <Pill
+              tone={DAY_TYPE_META[d].tone}
+              className={d === active ? "" : "opacity-45"}
+            >
               {DAY_TYPE_META[d].emoji} {DAY_TYPE_META[d].label}
             </Pill>
           </button>
@@ -79,7 +82,7 @@ function PlanView() {
         <p className="font-display text-xl font-extrabold uppercase">
           {meta.emoji} {meta.label}
         </p>
-        <p className="text-sm text-muted-foreground">{meta.blurb}</p>
+        <p className="text-sm text-muted-foreground">{meta.sub}</p>
       </PopCard>
 
       <div className="grid grid-cols-3 gap-3">
