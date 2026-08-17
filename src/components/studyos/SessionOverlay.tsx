@@ -95,7 +95,7 @@ export function SessionOverlay({
       task,
       activeSeconds,
       interruptions,
-      reflection: reflection.trim() || undefined,
+      reflection: reflection.trim(),
       rating,
       partial,
     });
