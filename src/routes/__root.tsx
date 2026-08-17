@@ -79,27 +79,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "StudyOS — study planner, streaks & focus sessions" },
+      { title: "StudyOS — your daily study command center" },
       {
         name: "description",
         content:
-          "StudyOS turns a Class 10 study planner into daily missions with focus timers, XP, streaks and an AI study coach.",
+          "StudyOS turns Amit's Class 10 study planner into live missions: what to do right now, focus sessions, streaks, XP and honest progress tracking.",
       },
-      { property: "og:title", content: "StudyOS — study planner that actually gets used" },
+      { property: "og:title", content: "StudyOS — your daily study command center" },
       {
         property: "og:description",
-        content: "Daily missions, focus timers, streaks and an AI study coach.",
+        content: "StudyOS turns Amit's Class 10 study planner into live missions: what to do right now, focus sessions, streaks, XP and honest progress tracking.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "StudyOS — your daily study command center" },
+      { name: "twitter:description", content: "StudyOS turns Amit's Class 10 study planner into live missions: what to do right now, focus sessions, streaks, XP and honest progress tracking." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/7cb72ace-98c8-4315-92eb-031131ae8d6f" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/7cb72ace-98c8-4315-92eb-031131ae8d6f" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

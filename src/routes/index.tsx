@@ -61,7 +61,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "StudyOS — your daily study command center" },
       {
         property: "og:description",
-        content: "Live timetable, focus sessions, streaks and an AI study coach.",
+        content: "StudyOS turns Amit's Class 10 study planner into live missions: what to do right now, focus sessions, streaks, XP and honest progress tracking.",
       },
     ],
   }),
